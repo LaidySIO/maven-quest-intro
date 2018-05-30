@@ -19,9 +19,24 @@ public class Calculation implements ICalculation {
         return value1 + value2;
     }
 
+    private static int generateInt(int max, int min) {
+        Random rand = new Random();
+        int random;
+
+        random = rand.nextInt((max - min) + 1) + min;
+
+        return random;
+    }
+
     @Override
     public int[] initMyArray(int taille) {
-        return null;
+        int[] randomArray = new int[taille - 1];
+
+        for (int i = 0; i < randomArray.length; i++) {
+            randomArray[i] = generateInt(taille, 1);
+        }
+
+        return randomArray;
     }
 
     @Override
@@ -63,11 +78,11 @@ public class Calculation implements ICalculation {
      */
     @Override
     public int compareChaines(String firstChaine, String secondeChaine) {
-        
         char[] chaineUne = firstChaine.toCharArray();
         char[] chaineDeux = secondeChaine.toCharArray();
+        
         for (int i = 0; i < chaineUne.length; i++) {
-            System.out.println("\n lette1 : " + chaineUne[i] + " => "+ (int)chaineUne[i] +  " lettre2 : " + chaineDeux[i]+ " => "+ (int)chaineDeux[i]);
+            //System.out.println("\n lette1 : " + chaineUne[i] + " => "+ (int)chaineUne[i] +  " lettre2 : " + chaineDeux[i]+ " => "+ (int)chaineDeux[i]);
             if (chaineUne[i] > chaineDeux[i]) {
                 return 1;
             }
@@ -88,28 +103,40 @@ public class Calculation implements ICalculation {
      */
     @Override
     public int verifyParite(String chaine) {
-        
         int compare = 0;
         int result = 0;
         int evenOdd;
-        compare = chaine.compareTo("0");
-        evenOdd = Integer.parseInt(chaine) % 2; 
         
-        if (compare > 0){ // Si positif
+        compare = chaine.compareTo("0");
+        evenOdd = Integer.parseInt(chaine) % 2;
+        if (compare > 0) { // Si positif
             result += 1;
-        }
-        else if (compare < 0) { // Si négatif
+        } else if (compare < 0) { // Si négatif
             result += 2;
         }
         if (evenOdd != 0) { // Si Impair
             result += 2;
         }
-            
+
         return result;
     }
 
     @Override
     public int nombreMagique(int[] array) {
-        return 0;
+        int max;
+        int min;
+        
+        max = array[0];
+        min = array[0];
+        for (int nb : array) {
+            if (max < nb) {
+                max = nb;
+            }
+            if (min > nb) {
+                min = nb;
+            }
+        }
+        //System.out.println("Max = " + max + "\nMin = " + min);
+        return min + max;
     }
 }

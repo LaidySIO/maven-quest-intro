@@ -29,10 +29,10 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         //testVerifyParite();
-        testCompareChaines();
+        //testCompareChaines();
         //testFactorielItterative();
         //testFactorielRecursive();
-        //testNombreMagique();
+        testNombreMagique();
         //testSortMyArray();
         //testProcessAnimal();
     }
@@ -96,7 +96,15 @@ public class Main {
     }
 
     public static void testNombreMagique() {
-
+        Calculation c = new Calculation();
+        int[] intArray = c.initMyArray(100);
+        int result;
+        
+        for (int nb : intArray) {
+            System.out.println(nb);
+        }
+        result = c.nombreMagique(intArray);
+        System.out.println("Le nombre magique est : " + result);
     }
 
     public static void testSortMyArray() {
