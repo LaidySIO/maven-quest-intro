@@ -31,8 +31,8 @@ public class Main {
         //testVerifyParite();
         //testCompareChaines();
         //testFactorielItterative();
-        //testFactorielRecursive();
-        testNombreMagique();
+        testFactorielRecursive();
+        //testNombreMagique();
         //testSortMyArray();
         //testProcessAnimal();
     }
@@ -83,7 +83,15 @@ public class Main {
      * le type int. Vous pouvez donc utiliser le type entier int.
      */
     public static void testFactorielItterative() {
-
+        Calculation c = new Calculation();
+        int nb;
+        int result;
+        
+        System.out.println("Saisir le nombre entier positif entre 0 et 16");
+        nb = sc.nextInt();
+        result = c.factorielItterative(nb);
+        
+        System.out.println(nb + "! = " + result);
     }
 
     /**
@@ -92,14 +100,21 @@ public class Main {
      * le type int. Vous pouvez donc utiliser le type entier int.
      */
     public static void testFactorielRecursive() {
-
+        Calculation c = new Calculation();
+        int nb;
+        int result;
+        
+        System.out.println("Saisir le nombre entier positif entre 0 et 16");
+        nb = sc.nextInt();
+        result = c.factorielRecursive(nb);
+        System.out.println(nb + "! = " + result);
     }
 
     public static void testNombreMagique() {
         Calculation c = new Calculation();
         int[] intArray = c.initMyArray(100);
         int result;
-        
+
         for (int nb : intArray) {
             System.out.println(nb);
         }
@@ -108,7 +123,19 @@ public class Main {
     }
 
     public static void testSortMyArray() {
+        Calculation c = new Calculation();
+        int[] intArray = c.initMyArray(100);
 
+        System.out.println("*************Tableau non trié****************");
+        for (int nb : intArray) {
+            System.out.println(nb);
+        }
+        intArray = c.sortMyArray(intArray);
+        System.out.println("*************Tableau trié****************");
+        for (int nb : intArray) {
+            System.out.println(nb);
+        }
+        
     }
 
     public static void testProcessAnimal() {

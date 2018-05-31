@@ -41,7 +41,18 @@ public class Calculation implements ICalculation {
 
     @Override
     public int[] sortMyArray(int[] arrayToSort) {
-        return null;
+        int temp;
+        for (int i = 1; i < arrayToSort.length; i++) {
+            for(int j = i ; j > 0 ; j--){
+                if(arrayToSort[j] < arrayToSort[j-1]){
+                    temp = arrayToSort[j];
+                    arrayToSort[j] = arrayToSort[j-1];
+                    arrayToSort[j-1] = temp;
+                }
+            }
+        }
+        
+        return arrayToSort;
     }
 
     /**
@@ -51,8 +62,16 @@ public class Calculation implements ICalculation {
      */
     @Override
     public int factorielItterative(int number) {
-
-        return 0;
+        int result;
+        int cpt;
+        
+        result = 1;
+        cpt = 1;
+        while (++cpt <= number) {
+            System.out.println(result + " * " + cpt);
+            result *= cpt;
+        }
+        return result;
     }
 
     /**
@@ -62,8 +81,17 @@ public class Calculation implements ICalculation {
      */
     @Override
     public int factorielRecursive(int number) {
-
-        return 0;
+        int result;
+        
+        if (number == 0) {
+            result =  1;
+        }
+        else{
+            
+            result = number * factorielRecursive(--number);
+        }
+        
+        return result;
     }
 
     /**
@@ -82,7 +110,6 @@ public class Calculation implements ICalculation {
         char[] chaineDeux = secondeChaine.toCharArray();
         
         for (int i = 0; i < chaineUne.length; i++) {
-            //System.out.println("\n lette1 : " + chaineUne[i] + " => "+ (int)chaineUne[i] +  " lettre2 : " + chaineDeux[i]+ " => "+ (int)chaineDeux[i]);
             if (chaineUne[i] > chaineDeux[i]) {
                 return 1;
             }
