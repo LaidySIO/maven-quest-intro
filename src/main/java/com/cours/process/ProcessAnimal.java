@@ -21,7 +21,7 @@ public class ProcessAnimal implements IProcessAnimal {
     @Override
     public List<Animal> loadAnimalsManually() {
         //animals.clear();
-       
+       Animal lion = new Animal(1, "Lion", 200, "23/12/1998", "Marron", 4, true);
         return null;
     }
 
