@@ -35,4 +35,5 @@ public interface IProcessAnimal {
     public void generateFileByWeight();
 
     public List<Animal> getAnimals();
+    
 }

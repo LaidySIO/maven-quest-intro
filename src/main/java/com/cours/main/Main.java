@@ -7,7 +7,11 @@ package com.cours.main;
 
 import com.cours.calcul.Calculation;
 import com.cours.calcul.ICalculation;
+import com.cours.entities.Animal;
 import com.cours.process.IProcessAnimal;
+import com.cours.process.ProcessAnimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,49 +26,65 @@ public class Main {
     private static ICalculation calculation = null;
     private static IProcessAnimal processAnimal = null;
     private static Scanner sc = new Scanner(System.in);
+    private static List<Animal> animalList = null;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //testVerifyParite();
+        // testVerifyParite();
         //testCompareChaines();
         //testFactorielItterative();
-        testFactorielRecursive();
+        //testFactorielRecursive();
         //testNombreMagique();
         //testSortMyArray();
         //testProcessAnimal();
+
     }
 
     public static void testVerifyParite() {
-        System.out.println("Entrez un nombre entier");
-        String nb = sc.next();
-        Calculation c = new Calculation();
-        switch (c.verifyParite(nb)) {
-            case 1:
-                System.out.println("Le nombre est positif et pair");
-                break;
-            case 2:
-                System.out.println("Le nombre est négatif et pair");
-            case 3:
-                System.out.println("Le nombre est positif et impar");
-                break;
-            case 4:
-                System.out.println("Le nombre est négatif et impair");
-                break;
-            default:
-                System.out.println("Le nombre est nul");
-                break;
-        }
+        String nb;
+        boolean validNumber;
 
+        nb = null;
+        validNumber = false;
+        while (!validNumber) { // Gestion erreur : si l'enrée n'est pas un int
+            System.out.println("Entrez un nombre entier");
+            nb = sc.next();
+            try {
+                Integer.parseInt(nb);
+                validNumber = true;
+                Calculation c = new Calculation();
+                switch (c.verifyParite(nb)) {
+                    case 1:
+                        System.out.println("Le nombre est positif et pair");
+                        break;
+                    case 2:
+                        System.out.println("Le nombre est négatif et pair");
+                    case 3:
+                        System.out.println("Le nombre est positif et impar");
+                        break;
+                    case 4:
+                        System.out.println("Le nombre est négatif et impair");
+                        break;
+                    default:
+                        System.out.println("Le nombre est nul");
+                        break;
+                }
+            } catch (Exception e) {
+                System.err.println("Veuillez saisir un nombre entier");
+            }
+        }
     }
 
     public static void testCompareChaines() {
         System.out.println("Entrez la première chaine");
         String chaineUne = sc.next();
+        System.out.println("Entrez la deuxième chaine");
+        String chaineDeux = sc.next();
         Calculation c = new Calculation();
-        switch (c.compareChaines(chaineUne, "Lala")) {
+        switch (c.compareChaines(chaineUne, chaineDeux)) {
             case -1:
                 System.out.println("La deuxième chaine est supérieur à la première");
                 break;
@@ -86,11 +106,11 @@ public class Main {
         Calculation c = new Calculation();
         int nb;
         int result;
-        
+
         System.out.println("Saisir le nombre entier positif entre 0 et 16");
         nb = sc.nextInt();
         result = c.factorielItterative(nb);
-        
+
         System.out.println(nb + "! = " + result);
     }
 
@@ -103,7 +123,7 @@ public class Main {
         Calculation c = new Calculation();
         int nb;
         int result;
-        
+
         System.out.println("Saisir le nombre entier positif entre 0 et 16");
         nb = sc.nextInt();
         result = c.factorielRecursive(nb);
@@ -135,12 +155,13 @@ public class Main {
         for (int nb : intArray) {
             System.out.println(nb);
         }
-        
+
     }
 
     public static void testProcessAnimal() {
-        //processAnimal.loadAnimalsManually();
+        //processAnimal = new ProcessAnimal();
         //processAnimal.loadAnimalsFile();
+        //processAnimal.loadAnimalsManually();
         //processAnimal.calculMoyennePoidsAnimaux();
         //processAnimal.calculEcartTypePoidsAnimaux();
     }
